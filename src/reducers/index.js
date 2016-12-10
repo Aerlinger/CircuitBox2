@@ -8,7 +8,11 @@
  */
 /* Populated by react-webpack-redux:reducer */
 import { combineReducers } from 'redux';
+import editor from '../reducers/editor.js';
+const reducers = { 
+  editor 
+};
 
-const reducers = {};
 const combined = combineReducers(reducers);
+
 module.exports = combined;

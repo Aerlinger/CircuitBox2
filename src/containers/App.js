@@ -8,17 +8,18 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import {} from '../actions/';
+import {
+  add_component,
+  editor
+} from '../actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Main from '../components/App';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    
-    
-    const { actions } = this.props;
-    return <Main actions={actions} />;
+    const {actions, editor} = this.props;
+    return <Main actions={actions} editor={editor}/>;
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -27,17 +28,21 @@ class App extends Component {
  *       adjust it here.
  */
 App.propTypes = {
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  editor: PropTypes.object.isRequired
 };
-
-function mapStateToProps(state) { // eslint-disable-line no-unused-vars
+function mapStateToProps(state) {
+  // eslint-disable-line no-unused-vars
   /* Populated by react-webpack-redux:reducer */
-  const props = {};
+  const props = { editor: state.editor };
   return props;
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
-  const actions = {};
+  const actions = {
+    add_component,
+    editor
+  };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }

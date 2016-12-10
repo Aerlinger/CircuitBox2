@@ -1,4 +1,11 @@
-let initialState = {
+/* Define your initial state here.
+ *
+ * If you change the type from object to something else, do not forget to update
+ * src/container/App.js accordingly.
+ */
+import {} from '../actions/const';
+
+const initialState = {
   editor_mode: "DEFAULT",  // "ADD_COMPONENT" | "SELECT" | "DRAG" | "HOVER"
   selected:    ["1", "2"],
   adding: [],
@@ -115,15 +122,19 @@ let initialState = {
       "params": {}
     }
   ]
-};
+}
 
-let foo = {
-  editor_mode: "DEFAULT",
-  circuit: []
-};
+function reducer(state = initialState, action) {
+  /* Keep the reducer clean - do not mutate the original state. */
+  // const nextState = Object.assign({}, state);
 
-export default function editor(state = foo, action) {
-  switch(action.type) {
+  switch (action.type) {
+    /*
+    case YOUR_ACTION: {
+      // Modify next state depending on the action and return it
+      return nextState;
+    }
+    */
     case "ADD":
       return {
         editor_mode: "ADDING",
@@ -137,7 +148,11 @@ export default function editor(state = foo, action) {
         circuit: [
         ]
       }
-    default:
-      return state
+    default: {
+      /* Return original state if no actions were consumed. */
+      return state;
+    }
   }
 }
+
+module.exports = reducer;
